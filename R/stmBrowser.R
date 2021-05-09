@@ -120,5 +120,4 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1500,
                 "/index.html, opening now.", sep=""))
     setwd(oldwd)
     browseURL(paste(dir, "/index.html", sep=""))
-    return(data)
 }
