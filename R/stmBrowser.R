@@ -3,8 +3,8 @@
 #data: data for stm model
 #covariates: vector of covariates you want to visualize
 #text: name of covariate where the text is held
-stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
-                       labeltype="prob", directory=getwd()){
+stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1500,
+                       labeltype="frex", directory=getwd()){
 
     #Error checking:
     if(nrow(data)!=nrow(mod$theta)){
@@ -100,7 +100,7 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
     writeLines(start, fileConn)
     close(fileConn)
 
-    topics <- labelTopics(mod, n=3)[[labeltype]]
+    topics <- labelTopics(mod, n=5)[[labeltype]]
     start <- "var topics = ["
     for(i in 1:nrow(topics)){
         topic <- list()
@@ -120,4 +120,5 @@ stmBrowser <- function(mod, data, covariates, text, id=NULL, n=1000,
                 "/index.html, opening now.", sep=""))
     setwd(oldwd)
     browseURL(paste(dir, "/index.html", sep=""))
+    return(data)
 }
